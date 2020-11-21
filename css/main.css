@@ -1,0 +1,84 @@
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    padding: 10px 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2e3649;
+}
+
+header > h1 {
+    color: #f2f2f2;
+    text-shadow: 1px 1px #800080;
+}
+
+.profile-icon {
+    width: 40px;
+    border-radius: 50%;
+
+    transition: all 0.2s ease;
+}
+
+.profile-icon:hover {
+    filter: brightness(1.1);
+}
+
+main {
+    flex-grow: 1;
+}
+
+.controls-container {
+    background-color: #5a75b5;
+    color: #f2f2f2;
+    padding: 10px 10px;
+}
+
+.controls-container .url-entry {
+    width: 30%;
+    background-color: #dae5ff;
+    color: #4d4d4d;
+    border: none;
+    outline: none;
+    padding: 0px 5px;
+    font-weight: bold;
+}
+
+.controls-container .url-entry:focus {
+    filter: drop-shadow(0px 0px 1px #800080);
+}
+
+.controls-container button {
+    padding: 1px 20px;
+    border: none;
+    outline: none;
+    background-color: #2e3649;
+    color: #f2f2f2;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.controls-container button:hover {
+    filter: brightness(1.2);
+}
+
+.color-container {
+    float: right;
+}
+
+.container {
+    display: block;
+}
+
+.empty-container-msg {
+    text-align: center;
+    font-size: 1.5em;
+    color: #4d4d4d;
+    margin-top: 10vh;
+}
