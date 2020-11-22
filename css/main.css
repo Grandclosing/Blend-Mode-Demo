@@ -1,8 +1,14 @@
 
+:root {
+    --empty-box-padding: 100%;
+    --blend-color: #800080;
+}
+
 body {
     display: flex;
     flex-direction: column;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-y: hidden;
 }
 
 header {
@@ -12,11 +18,13 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: #2e3649;
+    position: fixed;
+    width: 100%;
 }
 
 header > h1 {
     color: #f2f2f2;
-    text-shadow: 1px 1px #800080;
+    text-shadow: 1px 1px var(--blend-color);
 }
 
 .profile-icon {
@@ -38,6 +46,9 @@ main {
     background-color: #5a75b5;
     color: #f2f2f2;
     padding: 10px 10px;
+    position: fixed;
+    top: 68px;
+    width: 100%;
 }
 
 .controls-container .url-entry {
@@ -51,7 +62,7 @@ main {
 }
 
 .controls-container .url-entry:focus {
-    filter: drop-shadow(0px 0px 1px #800080);
+    filter: drop-shadow(0px 0px 1px var(--blend-color));
 }
 
 .controls-container button {
@@ -72,13 +83,65 @@ main {
     float: right;
 }
 
-.container {
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 100px;
+    justify-content: center;
+    align-content: center;
+    padding: 40px 130px;
+    margin-top: 114px;
+}
+
+.no-pic-container {
     display: block;
+    position: fixed;
+    width: 100vw;
+    /* to account for header and url entry */
+    height: calc(100vh - 114px); 
+    z-index: 10;
+
+    background-color: hsl(0deg 0% 0% / 73%);
+    margin-top: 114px;
 }
 
 .empty-container-msg {
     text-align: center;
-    font-size: 1.5em;
-    color: #4d4d4d;
-    margin-top: 10vh;
+    font-size: 2em;
+    color: #f2f2f2;
+    margin-top: calc(48vh - 114px);
 }
+
+.grid-element {
+    background-color: var(--blend-color);
+    padding: 1rem;
+}
+
+.grid-element::before {
+    content: "";
+    padding-bottom: var(--empty-box-padding);
+    display: block;
+}
+
+/* on bad url input these styles are applied */
+
+.bad-url {
+    color: red !important;
+    animation: shake;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }

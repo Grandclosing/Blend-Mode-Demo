@@ -24,17 +24,75 @@
         <main>
             <div class="controls-container">
                 <label for="url-entry">Enter an image url:</label>
-                <input type="url" name="url-entry" class="url-entry" onkeydown="search()" autofocus> 
-                <button class="url-submit" onclick="search()">Go</button>
+                <input type="url" name="url-entry" class="url-entry" onkeydown="processKey(event)" autofocus> 
+                <button class="url-submit" onclick="search(null)">Go</button>
 
                 <div class="color-container">
                     <label for="color-picker">Color to blend with:</label>
                     <input class="color-picker" name="color-picker" type="color" value="#800080">
                 </div>
             </div>
+
+            <div class="no-pic-container">
+                <p class="empty-container-msg">No image to display</p>
+            </div>
             
             <div class="grid-container">
-                <p class="empty-container-msg">No image to display</p>
+                <div class="grid-element">
+                    
+                </div>
+
+                <div class="grid-element">
+                    
+                </div>
+
+                <div class="grid-element">
+                    
+                </div>
+
+                <div class="grid-element">
+                    
+                </div>
+
+                <div class="grid-element">
+                    
+                </div>
+
+                <div class="grid-element">
+                    
+                </div>
+
+                <div class="grid-element">
+                    
+                </div>
+
+                <div class="grid-element">
+                    
+                </div>
+
+                <div class="grid-element">
+                    
+                </div>
+
+                <div class="grid-element">
+                    
+                </div>
+
+                <div class="grid-element">
+                    
+                </div>
+
+                <div class="grid-element">
+                    
+                </div>
+
+                <div class="grid-element">
+                    
+                </div>
+
+                <div class="grid-element">
+                    
+                </div>
             </div>
         </main>
     </body>
