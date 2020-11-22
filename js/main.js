@@ -37,10 +37,10 @@ function loadImage(url) {
     let boxes = document.getElementsByClassName('grid-element');
 
     let rootStyle = document.documentElement.style;
-    rootStyle.setProperty("--empty-box-padding", "0px");
+    rootStyle.setProperty('--empty-box-padding', '0px');
 
-    document.getElementsByClassName('no-pic-container')[0].style.display = "none";
-    document.body.style.overflowY = "scroll";
+    document.getElementsByClassName('no-pic-container')[0].style.display = 'none';
+    document.body.style.overflowY = 'scroll';
 
     for(box of boxes) {
         let imageNode = document.createElement('img');
@@ -48,6 +48,11 @@ function loadImage(url) {
 
         box.appendChild(imageNode);
     }
+}
+
+function updateColor() {
+    document.documentElement.style.setProperty('--blend-color', 
+        document.getElementsByClassName('color-picker')[0].value);
 }
 
 // function loadImage(url) {

@@ -11,6 +11,19 @@ body {
     overflow-y: hidden;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #2e3649;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--blend-color);
+    border-radius: 15px;
+}
+
 header {
     padding: 10px 25px;
     display: flex;
