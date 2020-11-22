@@ -33,6 +33,7 @@ header {
     background-color: #2e3649;
     position: fixed;
     width: 100%;
+    z-index: 10;
 }
 
 header > h1 {
@@ -62,6 +63,7 @@ main {
     position: fixed;
     top: 68px;
     width: 100%;
+    z-index: 10;
 }
 
 .controls-container .url-entry {

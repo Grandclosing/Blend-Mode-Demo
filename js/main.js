@@ -73,29 +73,3 @@ function updateColor() {
     document.documentElement.style.setProperty('--blend-color', 
         document.getElementsByClassName('color-picker')[0].value);
 }
-
-// function loadImage(url) {
-//     fetch(url, {
-//         method: 'GET',
-//         mode: 'no-cors',
-//         referrerPolicy: 'no-referrer'
-//     })
-//     .then(response => response.blob())
-//     .then(image => {
-//         let ourNewImage = URL.createObjectURL(image);
-//         console.log(ourNewImage);
-
-//         applyImageToDOM(url);
-//     });
-// }
-
-// function loadImage(url) {
-//     let ourImage = new Image();
-    
-//     ourImage.crossOrigin = 'anonymous';
-//     ourImage.addEventListener('load', () => {
-//         applyImageToDOM(this);
-//     }, false);
-//     ourImage.src = url;
-// }
-
