@@ -1,4 +1,21 @@
 
+const blendModes = [
+    'normal',
+    'multiply',
+    'screen',
+    'overlay',
+    'darken',
+    'lighten',
+    'color-dodge',
+    'color-burn',
+    'difference',
+    'exclusion',
+    'hue',
+    'saturation',
+    'color',
+    'luminosity'
+]
+
 function isValidURL(str) {
     try {
         url = new URL(str);
@@ -42,9 +59,11 @@ function loadImage(url) {
     document.getElementsByClassName('no-pic-container')[0].style.display = 'none';
     document.body.style.overflowY = 'scroll';
 
-    for(box of boxes) {
+    for(let i = 0; i < boxes.length; ++i) {
+        let box = boxes[i];
         let imageNode = document.createElement('img');
         imageNode.setAttribute('src', url);
+        imageNode.style.mixBlendMode = blendModes[i];
 
         box.appendChild(imageNode);
     }

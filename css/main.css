@@ -125,6 +125,27 @@ main {
     margin-top: calc(48vh - 114px);
 }
 
+.grid-element-container {
+    text-align: center;
+}
+
+.grid-element-container code {
+    font-weight: bold;
+    width: 100%;
+    display: block;
+    background-color: #2b2b2b;
+    padding: 10px;
+    color: #f2f2f2;
+}
+
+.css-property {
+    color: #288db7;
+}
+
+.css-value {
+    color: #b46408;
+}
+
 .grid-element {
     background-color: var(--blend-color);
     padding: 1rem;
