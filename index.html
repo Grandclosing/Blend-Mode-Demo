@@ -23,12 +23,11 @@
 
         <main>
             <div class="controls-container">
-                <label for="url-entry">Enter an image url:</label>
-                <input type="url" name="url-entry" class="url-entry" onkeydown="processKey(event)" autofocus> 
+                <input type="url" name="url-entry" class="url-entry" onClick="this.select()" onkeydown="processKey(event)" placeholder="Image URL" autofocus> 
                 <button class="url-submit" onclick="search(null)">Go</button>
 
                 <div class="color-container">
-                    <label for="color-picker">Color to blend with:</label>
+                    <label for="color-picker" class="color-picker-label"></label>
                     <input class="color-picker" name="color-picker" type="color" oninput="updateColor()" value="#800080">
                 </div>
             </div>

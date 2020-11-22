@@ -16,6 +16,8 @@ const blendModes = [
     'luminosity'
 ]
 
+let currentURL = "";
+
 function isValidURL(str) {
     try {
         url = new URL(str);
@@ -36,6 +38,11 @@ function processKey(e) {
 function search() {
     const urlEntry = document.getElementsByClassName('url-entry')[0];
     const url = urlEntry.value;
+
+    if(url == currentURL)
+        return;
+
+    currentURL = url;
 
     if(!isValidURL(url)) {
         urlEntry.classList.toggle('bad-url');
@@ -64,6 +71,9 @@ function loadImage(url) {
         let imageNode = document.createElement('img');
         imageNode.setAttribute('src', url);
         imageNode.style.mixBlendMode = blendModes[i];
+
+        if(box.firstChild)
+            box.removeChild(box.firstChild);
 
         box.appendChild(imageNode);
     }

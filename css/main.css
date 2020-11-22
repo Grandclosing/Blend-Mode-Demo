@@ -98,10 +98,14 @@ main {
     float: right;
 }
 
+.color-picker-label:after {
+    content: "Color to blend with:";
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 100px;
+    gap: 60px;
     justify-content: center;
     align-content: center;
     padding: 40px 130px;
@@ -180,4 +184,44 @@ main {
     80% { transform: translate(-1px, -1px) rotate(1deg); }
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
-  }
+}
+
+/* responsive styles */
+
+@media (max-width: 1350px) {
+    .controls-container .url-entry {
+        width: 45%;
+    }
+
+    .grid-container {
+        gap: 45px;
+        padding: 40px 60px;
+    }
+}
+
+@media (max-width: 1150px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .grid-container {
+        padding: 40px 40px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .controls-container .url-entry {
+        width: 55%;
+    }
+
+    .color-picker-label:after {
+        content: "Blend with:";
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
