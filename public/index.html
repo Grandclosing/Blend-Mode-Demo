@@ -23,10 +23,23 @@
             <a class="github-button" href="https://github.com/Grandclosing" data-size="large" aria-label="Follow @Grandclosing on GitHub">Follow @Grandclosing</a>
         </header>
 
+        <div class="modal-background">
+            <div class="error-modal">
+                <h1>Yikes.</h1>
+                <p>An error was encountered while saving the image. This is most likely a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS" target="_blank" rel="noopener">CORS</a> issue.</p>
+                <p class="recommendation-text">It's recommended to use an <a href="https://imgur.com/" target="_blank" rel="noopener">Imgur</a> direct link to an image, as the site has a liberal CORS policy.</p>
+                <br>
+                <p>Example link: <code>https://i.imgur.com/la87z3a.jpg</code></p>
+                <button onClick="closeModal()">Ok</button>
+            </div>
+        </div>
+        
         <main>
             <div class="controls-container">
-                <input type="url" name="url-entry" class="url-entry" onClick="this.select()" onkeydown="processKey(event)" placeholder="https://i.imgur.com/" autofocus> 
-                <button class="url-submit" onclick="search(null)">Go</button>
+                <div class="search-container">
+                    <input type="url" name="url-entry" class="url-entry" onClick="this.select()" onkeydown="processKey(event)" placeholder="https://i.imgur.com/" autofocus> 
+                    <button class="url-submit" onclick="search(null)">Go</button>
+                </div>
 
                 <div class="color-container">
                     <label for="color-picker" class="color-picker-label"></label>
@@ -194,5 +207,9 @@
                 </div>
             </div>
         </main>
+
+        <footer>
+            <p>Made with <span class="highlight">&#10084;</span> by Grandclosing</p>
+        </footer>
     </body>
 </html>

@@ -36,6 +36,15 @@ function processKey(e) {
         search();
 }
 
+function shakeSearchbar() {
+    const urlEntry = document.getElementsByClassName('url-entry')[0];
+    urlEntry.classList.toggle('bad-url');
+
+    setTimeout(function() {
+        urlEntry.classList.toggle('bad-url');
+    }, 1000);
+}
+
 function search() {
     const urlEntry = document.getElementsByClassName('url-entry')[0];
     const url = urlEntry.value;
@@ -46,11 +55,7 @@ function search() {
     currentURL = url;
 
     if(!isValidURL(url)) {
-        urlEntry.classList.toggle('bad-url');
-
-        setTimeout(function() {
-            urlEntry.classList.toggle('bad-url');
-        }, 1000);
+        shakeSearchbar();
 
         return;
     }
@@ -79,7 +84,7 @@ function loadImage(url) {
 
         box.appendChild(imageNode);
 
-        saveButtons[i].classList.toggle('save-disabled');
+        saveButtons[i].classList.remove('save-disabled');
     }
 
     imageLoaded = true;
@@ -99,5 +104,18 @@ function save(id) {
     domtoimage.toBlob(box)
         .then(function(blob) {
             window.saveAs(blob, fileName);
+        })
+        .catch(function(e) {
+            shakeSearchbar();
+
+            openModal();
         });
+}
+
+function openModal() {
+    document.getElementsByClassName('modal-background')[0].classList.add('modal-visible');
+}
+
+function closeModal() {
+    document.getElementsByClassName('modal-background')[0].classList.remove('modal-visible');
 }

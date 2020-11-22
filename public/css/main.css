@@ -24,6 +24,10 @@ body {
     border-radius: 15px;
 }
 
+input {
+    min-width: 0px;
+}
+
 header {
     padding: 10px 25px;
     display: flex;
@@ -45,6 +49,17 @@ header span {
     height: 28px;
 }
 
+footer {
+    text-align: center;
+    background-color: #2e3649;
+    color: #f2f2f2;
+    padding: 10px 0px;
+}
+
+.highlight {
+    color: #5a75b5;
+}
+
 main {
     flex-grow: 1;
 }
@@ -57,23 +72,37 @@ main {
     top: 68px;
     width: 100%;
     z-index: 10;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 20px;
 }
 
-.controls-container .url-entry {
-    width: 30%;
+.search-container {
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+    flex-grow: 1;
+}
+
+.url-entry {
     background-color: #dae5ff;
     color: #4d4d4d;
     border: none;
     outline: none;
     padding: 0px 5px;
     font-weight: bold;
+
+    flex-grow: 1;
+    max-width: 700px;
 }
 
-.controls-container .url-entry:focus {
+.url-entry:focus {
     filter: drop-shadow(0px 0px 1px var(--blend-color));
 }
 
-.controls-container button {
+.search-container button {
     padding: 1px 20px;
     border: none;
     outline: none;
@@ -81,14 +110,13 @@ main {
     color: #f2f2f2;
     font-weight: bold;
     cursor: pointer;
+
+    display: flex;
+    flex-direction: row;
 }
 
-.controls-container button:hover {
+.search-container button:hover {
     filter: brightness(1.2);
-}
-
-.color-container {
-    float: right;
 }
 
 .color-picker-label:after {
@@ -106,14 +134,14 @@ main {
 }
 
 .no-pic-container {
-    display: none; /* change this back to block */
+    display: block;
     position: fixed;
     width: 100vw;
     /* to account for header and url entry */
     height: calc(100vh - 114px); 
     z-index: 10;
 
-    background-color: hsl(0deg 0% 0% / 73%);
+    background-color: hsl(0deg 0% 0% / 80%);
     margin-top: 114px;
 }
 
@@ -204,6 +232,67 @@ main {
     animation-duration: 1s;
 }
 
+.modal-background {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: hsl(0deg 0% 0% / 80%);
+    z-index: 15;
+}
+
+.modal-visible {
+    display: block;
+}
+
+.error-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    background-color: #f2f2f2;
+    padding: 10px 25px;
+    border-radius: 3px;
+
+    width: 40%;
+}
+
+.error-modal p code {
+    background-color: #2e3649;
+    color: #f2f2f2;
+    font-weight: bold;
+    padding: 3px 10px;
+}
+
+.error-modal p a {
+    color: #5a75b5;
+    font-weight: bold;
+}
+
+.error-modal button {
+    float: right;
+    margin-top: 10px;
+    border: none;
+    outline: none;
+    background-color: #2e3649;
+    color: #f2f2f2;
+    padding: 3px 30px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.error-modal button:hover {
+    filter: brightness(1.2);
+}
+
+.error-modal button:active {
+    filter: brightness(0.8);
+}
+
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
     10% { transform: translate(-1px, -2px) rotate(-1deg); }
@@ -221,13 +310,13 @@ main {
 /* responsive styles */
 
 @media (max-width: 1350px) {
-    .controls-container .url-entry {
-        width: 45%;
-    }
-
     .grid-container {
         gap: 45px;
         padding: 40px 60px;
+    }
+
+    .error-modal {
+        width: 50%;
     }
 }
 
@@ -241,6 +330,10 @@ main {
     .grid-container {
         padding: 40px 40px;
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .error-modal {
+        width: 75%;
     }
 }
 
@@ -258,10 +351,6 @@ main {
         margin-top: 102px;
     }
 
-    .controls-container .url-entry {
-        width: 55%;
-    }
-
     .color-picker-label:after {
         content: "Blend with:";
     }
@@ -269,5 +358,83 @@ main {
     .grid-container {
         grid-template-columns: repeat(1, 1fr);
         margin-top: 102px;
+    }
+
+    .error-modal {
+        width: 85%; 
+    }
+
+    .error-modal .recommendation-text {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 500px) {
+    header {
+        flex-direction: column;
+    }
+
+    header span {
+        margin-top: 5px;
+    }
+
+    .controls-container {
+        top: 89px;
+        flex-direction: column;
+    }
+
+    .color-container {
+        margin-top: 5px;
+    }
+
+    .no-pic-container {
+        height: calc(100vh - 164px);
+        margin-top: 164px;
+    }
+
+    .grid-container {
+        margin-top: 164px;
+    }
+
+    .url-entry {
+        font-size: 0.8em;
+    }
+
+    .color-picker-label {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 400px) {
+    .error-modal h1 {
+        font-size: 1.8em;
+    }
+    
+    .error-modal p {
+        font-size: 0.8em;
+    }
+}
+
+/* Galaxy Fold */
+@media (max-width: 300px) {
+    header h1 {
+        font-size: 1.2em;
+    }
+
+    .empty-container-msg {
+        font-size: 1.5em;
+    }
+
+    .controls-container {
+        top: 81px;
+    }
+
+    .no-pic-container {
+        height: calc(100vh - 156px);
+        margin-top: 156px;
+    }
+
+    .grid-container {
+        margin-top: 156px;
     }
 }
