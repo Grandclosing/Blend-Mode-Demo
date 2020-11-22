@@ -16,6 +16,7 @@ const blendModes = [
     'luminosity'
 ]
 
+let imageLoaded = false;
 let currentURL = "";
 
 function isValidURL(str) {
@@ -59,6 +60,7 @@ function search() {
 
 function loadImage(url) {
     let boxes = document.getElementsByClassName('grid-element');
+    let saveButtons = document.getElementsByClassName('save-image-button');
 
     let rootStyle = document.documentElement.style;
     rootStyle.setProperty('--empty-box-padding', '0px');
@@ -76,10 +78,26 @@ function loadImage(url) {
             box.removeChild(box.firstChild);
 
         box.appendChild(imageNode);
+
+        saveButtons[i].classList.toggle('save-disabled');
     }
+
+    imageLoaded = true;
 }
 
 function updateColor() {
     document.documentElement.style.setProperty('--blend-color', 
         document.getElementsByClassName('color-picker')[0].value);
+}
+
+function save(id) {
+    if(!imageLoaded) return;
+
+    let box = document.getElementsByClassName('grid-element')[id];
+    let fileName = blendModes[id] + ".png";
+
+    domtoimage.toBlob(box)
+        .then(function(blob) {
+            window.saveAs(blob, fileName);
+        });
 }

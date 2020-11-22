@@ -41,15 +41,8 @@ header > h1 {
     text-shadow: 1px 1px var(--blend-color);
 }
 
-.profile-icon {
-    width: 40px;
-    border-radius: 50%;
-
-    transition: all 0.2s ease;
-}
-
-.profile-icon:hover {
-    filter: brightness(1.1);
+header span {
+    height: 28px;
 }
 
 main {
@@ -113,7 +106,7 @@ main {
 }
 
 .no-pic-container {
-    display: block;
+    display: none; /* change this back to block */
     position: fixed;
     width: 100vw;
     /* to account for header and url entry */
@@ -157,10 +150,49 @@ main {
     padding: 1rem;
 }
 
+.grid-element img {
+    margin: 0 auto;
+}
+
 .grid-element::before {
     content: "";
     padding-bottom: var(--empty-box-padding);
     display: block;
+}
+
+.save-image-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 15px;
+    padding: 8px 0px;
+    background-color: #2e3649;
+    color: #f2f2f2;
+    font-weight: bold;
+    transition: filter 0.2s ease;
+    cursor: pointer;
+}
+
+.save-image-button:hover {
+    filter: brightness(1.2);
+}
+
+.save-image-button:active {
+    filter: brightness(0.8);
+}
+
+.save-image-button img {
+    width: 20px;
+}
+
+.save-disabled {
+    filter: grayscale();
+    cursor: default;
+}
+
+.save-disabled:hover {
+    filter: grayscale();
 }
 
 /* on bad url input these styles are applied */
@@ -213,6 +245,19 @@ main {
 }
 
 @media (max-width: 600px) {
+    header > h1 {
+        font-size: 1.5em;
+    }
+
+    .controls-container {
+        top: 56px;
+    }
+
+    .no-pic-container {
+        height: calc(100vh - 102px);
+        margin-top: 102px;
+    }
+
     .controls-container .url-entry {
         width: 55%;
     }
@@ -223,5 +268,6 @@ main {
 
     .grid-container {
         grid-template-columns: repeat(1, 1fr);
+        margin-top: 102px;
     }
 }
